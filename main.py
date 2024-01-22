@@ -1,13 +1,25 @@
 from pypresence import Presence
-import questionary
+import tkinter
 from time import sleep
 
-client_id = questionary.text("Enter the client id for your discord application:").ask()
-RPC = Presence(client_id)
-RPC.connect()
-details = questionary.text("Enter all but the last line of your custom rich presence:").ask()
-state = questionary.text("Enter the last line of your custom rich presence:").ask()
-large_image = questionary.text("Enter your image key:").ask()
-RPC.update(state=state, details=details, large_image=large_image)
-while True:
-    sleep(15)
+window = tkinter.Tk()
+window.title("Custom Rich Presence")
+tkinter.Label(text="Client ID").pack()
+client_id = tkinter.Entry()
+client_id.pack()
+tkinter.Label(text="Custom Rich Presence").pack()
+details = tkinter.Entry()
+details.pack()
+tkinter.Label(text="Your image key").pack()
+large_image = tkinter.Entry()
+large_image.pack()
+
+def start_rpc():
+    RPC = Presence(client_id.get())
+    RPC.connect()
+    RPC.update(details=details.get(), large_image=large_image.get())
+    tkinter.Label(text="Activated!", fg="green").pack()
+
+start_button = tkinter.Button(text="Activate", command=start_rpc)
+start_button.pack()
+tkinter.mainloop()
