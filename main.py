@@ -5,7 +5,7 @@ from time import sleep
 window = tkinter.Tk()
 window.title("Custom Rich Presence")
 tkinter.Label(text="Client ID").pack()
-client_id = tkinter.Entry()
+client_id = tkinter.Entry(show="*")
 client_id.pack()
 tkinter.Label(text="Custom Rich Presence").pack()
 details = tkinter.Entry()
