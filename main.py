@@ -19,6 +19,7 @@ def start_rpc():
     RPC.connect()
     RPC.update(details=details.get(), large_image=large_image.get())
     tkinter.Label(text="Activated!", fg="green").pack()
+    tkinter.Label(text="Close window to stop rich presence", fg="red").pack()
 
 start_button = tkinter.Button(text="Activate", command=start_rpc)
 start_button.pack()
